@@ -1,120 +1,74 @@
-# 🖥️ My Dev OS
+# My Dev OS
 
-A custom desktop environment built entirely in Python + PyQt5. Includes a desktop
-with wallpaper and icons, a Windows-style taskbar with a Start menu and system tray,
-a Notepad, a Task Manager, and a two-player Pong game.
+This is a little desktop environment I built using Python and PyQt5. It's not a real
+operating system (no kernel, no bootloader) — it's a desktop shell that runs on top of
+whatever OS you already have. It has a desktop with icons, a taskbar with a start menu,
+a notepad, a task manager, and a Pong game.
 
----
+## What you need
 
-## 📦 Requirements
-
-- Python 3.8+
+- Python 3.8 or newer
 - PyQt5
 - psutil
 
-Install dependencies:
+Install both with:
 
 ```bash
 pip install PyQt5 psutil
 ```
 
----
+## Running it
 
-## 🚀 Running
-
-Launch the full desktop environment (desktop background + taskbar):
+To start the whole thing (desktop + taskbar):
 
 ```bash
 python3 main.py
 ```
 
-This opens:
-- The **desktop** — background + double-clickable app icons
-- The **taskbar** — Start button, quick-launch icons, system tray, clock
-
-### Run apps individually
-You can also launch any app on its own without the full desktop:
+If you just want one app without the rest, you can run any of them on their own:
 
 ```bash
-python3 notepad.py       # Text editor
-python3 taskmanager.py   # Process / CPU / RAM monitor
-python3 pong.py          # Two-player Pong
+python3 notepad.py
+python3 taskmanager.py
+python3 pong.py
 ```
 
----
+## Setting a wallpaper
 
-## 🖼️ Setting a Wallpaper
+Put an image in the project folder and name it `wallpaper.jpg`. It'll stretch to fill
+the screen automatically. If there's no `wallpaper.jpg` there, it just uses a dark blue
+gradient instead.
 
-Drop an image named exactly **`wallpaper.jpg`** into the project folder (same folder
-as `main.py`). It will automatically scale to fill the screen.
+## The apps
 
-If no `wallpaper.jpg` is found, the desktop falls back to a dark blue gradient.
+**Notepad** — basic text editor. Open, save, save as, the usual shortcuts (Ctrl+S,
+Ctrl+O, etc.) all work.
 
----
+**Task Manager** — shows CPU and RAM usage, plus a list of running processes. You can
+select one and hit "End Task" to kill it. Refreshes every couple seconds.
 
-## 🧩 Apps
+**Pong** — two player, same keyboard. Player 1 uses W/S, player 2 uses the arrow keys.
+Space pauses the game, and also restarts it once someone wins. First to 7 points takes it.
 
-### 📝 Notepad
-A simple text editor.
-- File menu: New, Open, Save, Save As, Exit
-- Edit menu: Undo, Redo, Cut, Copy, Paste, Select All
-- Standard keyboard shortcuts (Ctrl+S, Ctrl+O, etc.)
+## Desktop and taskbar
 
-### 📊 Task Manager
-Live system monitor.
-- Real-time CPU % and RAM % bars
-- Sortable process table (PID, Name, CPU %, RAM MB)
-- Select a process and click **End Task** to terminate it
-- Auto-refreshes every 2 seconds
+Double-click the icons on the desktop to open an app. The taskbar at the bottom has a
+Start button (click it for a small menu with all the apps plus a shut down option),
+quick-launch buttons for each app, and on the right side there's sound/network/battery
+icons plus a clock.
 
-### 🏓 Pong
-Two-player Pong.
-
-| Key | Action |
-|-----|--------|
-| W / S | Player 1 (left paddle) |
-| ↑ / ↓ | Player 2 (right paddle) |
-| SPACE | Pause / Resume |
-| SPACE (after a win) | Start a new game |
-
-First to **7 points** wins.
-
----
-
-## 🖱️ Desktop & Taskbar
-
-**Desktop icons** — double-click to launch Notepad, Task Manager, or Pong.
-
-**Taskbar (bottom of screen):**
-- **⊞ Start** — opens a Start menu with all apps + Shut Down
-- **Quick-launch buttons** — one click to open Notepad, Task Manager, or Pong
-- **System tray** — 🔊 sound (click to mute/unmute), 📶 network status, 🔋 battery %
-- **Clock** — live time + date, updates every second
-
----
-
-## 📁 Project Structure
+## Files
 
 ```
 devos/
-├── main.py          ← Launches the full desktop environment (start here)
-├── desktop.py        ← Desktop background + app icons
-├── taskbar.py         ← Taskbar, Start menu, system tray, clock
-├── notepad.py         ← Text editor
-├── taskmanager.py      ← Process / CPU / RAM monitor
-├── pong.py              ← Two-player Pong game
-├── wallpaper.jpg         ← (optional) your custom background image
-└── README.md
-```
+├── main.py          - run this to start everything
+├── desktop.py        - background + icons
+├── taskbar.py         - taskbar, start menu, tray icons, clock
+├── notepad.py         - text editor
+├── taskmanager.py      - process monitor
+├── pong.py              - the game
 
----
+this was my mini dev os
 
-## 💡 Ideas for What's Next
 
-- A calculator app
-- A file explorer
-- A settings panel (change wallpaper, accent color, etc.)
-- Auto-start on boot (Linux: add to `.xinitrc` or a systemd user service)
-- More games (Snake, Minesweeper, etc.)
 
-Just ask and we'll build it!
